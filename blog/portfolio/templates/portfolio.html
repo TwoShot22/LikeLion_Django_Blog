@@ -96,11 +96,12 @@
     <div class="container">
 
       <div class="row">
+        {% for portfolio in portfolios.all %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img src="{% static 'Likelion_logo.jpg' %}" height=400 alt="Likelion_logo.jpg">
+            <img src="{{ portfolio.image.url }}" height=400>
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">{{ portfolio.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -111,6 +112,7 @@
             </div>
           </div>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>
