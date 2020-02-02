@@ -120,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'portfolio', 'static')
+] # STATIC File들이 현재 어디에 있는 지 작성
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC File들이 모이는 곳
