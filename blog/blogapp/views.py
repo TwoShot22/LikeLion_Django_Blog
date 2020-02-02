@@ -14,6 +14,9 @@ def detail(request, blog_id):
 def new(request):
     return render(request, 'new.html')
 
+def portfolio(request):
+    return render(request, 'portfolio.html')
+
 def create(request): #입력받은 내용을 DB에 넣어주는 함수
     blog = Blog()
     blog.title = request.GET['title']
