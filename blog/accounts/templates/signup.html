@@ -1,10 +1,17 @@
 {% extends 'base.html' %}
 
 {% block contents %}
+
+{% if error %}
+{{ error }}
+<br><br>
+{% endif %}
+
 <div class="container">
     <h1>Sign Up!</h1>
 
-    <form>
+    <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %}
         Username : 
         <br>
         <input type="text" name="username">
