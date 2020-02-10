@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 from django.core.paginator import Paginator
 from .models import Blog
+from .form import BlogPost
 
 # Create your views here.
 def home(request):
@@ -36,3 +37,18 @@ def create(request): #입력받은 내용을 DB에 넣어주는 함수
     blog.pub_date = timezone.datetime.now()
     blog.save() #Queryset Method로, 객체에 들어간 내용을 DB에 저장
     return redirect('/blog/'+str(blog.id))
+
+def blogpost(request):
+    # 입력된 내용을 처리하는 기능 -> POST
+    if request.method == 'POST':
+        form = BlogPost(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pub_date = timezone.datetime.now()
+            post.save()
+            return redirect('home')
+    
+    # 빈 페이지를 띄워주는 기능 -> GET
+    else:
+        form = BlogPost()
+        return render(request, 'new.html', {'form':form})
