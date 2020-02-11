@@ -8,7 +8,7 @@ from .form import BlogPost
 def home(request):
     blogs = Blog.objects #Queryset
 
-    # Paginating
+    # [Paginating]
     # Get All Object
     blog_list = Blog.objects.all()
     # Split Object with Paginator
